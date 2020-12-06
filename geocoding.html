@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Geocoding</title>
+</head>
+<body>
+    <div class="card text-white bg-primary mb-3" style="max-width: 100%;">
+       
+        <div class="card-body">
+          <h5  id="formatted_adress" class="card-title"></h5>
+          <p class="card-text"></p>
+        </div>
+      </div>
+
+      <div class="card text-white bg-secondary mb-3" style="max-width: 100%;">
+        <div class="card-header">Geometry Location</div>
+        <div class="card-body">
+          <h5 id = "lat" class="card-title">Latitude : </h5>
+          <h5 id = "lng"class="card-title">Longitude : </h5>
+        </div>
+      </div>
+
+      <ul  id = "adress_components" class="list-group">
+       
+      </ul>
+
+    
+    <script>
+        geoCode();
+
+        function geoCode(){
+            axios.get("https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyBi-aqdycegFXEhvd37vSubX0u0sGjw3FM")
+
+            .then(function(response){
+                console.log(response.data.results[0])
+                document.getElementById('formatted_adress').innerHTML = `adress : ${response.data.results[0].formatted_address}`
+                document.getElementById('lat').innerHTML += ` ${response.data.results[0].geometry.location.lat}`
+                document.getElementById('lng').innerHTML += ` ${response.data.results[0].geometry.location.lng}`
+
+                const arr =  response.data.results[0].address_components.map((item)=>{
+                return `<li class="list-group-item">${item.long_name }, ${item.short_name} , ${item.types}</li>`
+                 
+                })
+                console.log({arr})
+
+                document.getElementById('adress_components').innerHTML = arr
+
+            })
+            .catch(function(error){
+                console.log(error)
+            })
+        
+        }
+
+
+    </script>
+</body>
+</html>
