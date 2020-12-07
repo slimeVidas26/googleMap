@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Geocoding2</title>
+
+    
+</head>
+<body>
+    <h1 class="text-center">Geocoding 2</h1>
+
+    <ul id = "first" class="list-group"></ul>
+
+    <script>
+    function geoCode2(){
+
+        
+        
+         var location = "1600+Amphitheatre+Parkway,+Mountain+View,+CA";
+         var api = "AIzaSyBi-aqdycegFXEhvd37vSubX0u0sGjw3FM";
+         //axios.get("https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyBi-aqdycegFXEhvd37vSubX0u0sGjw3FM")
+         axios.get("https://maps.googleapis.com/maps/api/geocode/json" ,{
+             params : {
+                 address : location,
+                 key : api
+
+             }
+         })
+        .then(function(response){
+            //console.log( typeof response.data.results[0]) //object
+            for (let i in response.data.results[0] ){
+                console.log(typeof i)
+                document.getElementById('first').innerHTML += `<li id = data-${i} class="list-group-item">${i}</li>`
+            }
+
+            const formattedAddress = response.data.results[0].formatted_address;
+            document.getElementById('data-formatted_address').innerHTML += ': '+ formattedAddress;
+
+            const geometry = response.data.results[0].geometry.location;
+            document.getElementById('data-geometry').innerHTML += ` : Latitude =  ${geometry.lat}  : Longitude =  ${geometry.lng} ` ;
+
+            const placeId = response.data.results[0].place_id;
+            document.getElementById('data-place_id').innerHTML += ': '+placeId ;
+
+            const plusCode = response.data.results[0].plus_code;
+            console.log(plusCode)
+            for(let i in plusCode){
+                document.getElementById('data-plus_code').innerHTML += `:${i}: ${plusCode[i]}`;
+
+            }
+
+        })
+    }
+
+    geoCode2()
+    </script>
+   
+    
+</body>
+</html>
