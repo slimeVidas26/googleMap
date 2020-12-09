@@ -12,13 +12,10 @@
 <body>
     <h1 class="text-center">Geocoding 2</h1>
 
-    <ul id = "first" class="list-group"></ul>
+    <ul id = "container" class="list-group"></ul>
 
     <script>
     function geoCode2(){
-
-        
-        
          var location = "1600+Amphitheatre+Parkway,+Mountain+View,+CA";
          var api = "AIzaSyBi-aqdycegFXEhvd37vSubX0u0sGjw3FM";
          //axios.get("https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyBi-aqdycegFXEhvd37vSubX0u0sGjw3FM")
@@ -30,29 +27,114 @@
              }
          })
         .then(function(response){
+
+           
             //console.log( typeof response.data.results[0]) //object
-            for (let i in response.data.results[0] ){
-                console.log(typeof i)
-                document.getElementById('first').innerHTML += `<li id = data-${i} class="list-group-item">${i}</li>`
+            const geoObj = response.data.results[0];
+             console.log(Object.keys(geoObj))
+             const iterate = (obj) => {
+                 //queryDom
+            Object.keys(obj).forEach(key => {   
+            if (typeof obj[key] === 'object') {
+                    iterate(obj[key])
+                }
+
+                else if(typeof obj[key] === 'object' && Array.isArray(obj)){
+                     for(let i = 0 ; i < obj[key].length ; i++){
+                         console.log(`key: ${key}, value: ${obj[key]}`)
+                        
+                         
+                     }
+                     
+               }  
+            else { 
+
+                console.log(`key: ${key}, value: ${obj[key]}`)
+                    const listItem  = document.createElement('li');
+                    listItem.setAttribute('data-name' , key)
+                      listItem.classList.add("list-group-item");
+                      listItem.innerHTML = `<strong>${key}</strong> : ${obj[key]}`
+                      document.getElementById('container').append(listItem) 
             }
+                
+            })
+          }     
 
-            const formattedAddress = response.data.results[0].formatted_address;
-            document.getElementById('data-formatted_address').innerHTML += ': '+ formattedAddress;
+          iterate(geoObj) 
+            // for (let i in geoObj ){
 
-            const geometry = response.data.results[0].geometry.location;
-            document.getElementById('data-geometry').innerHTML += ` : Latitude =  ${geometry.lat}  : Longitude =  ${geometry.lng} ` ;
+            //      const geoList = document.createElement('li');
+            //      geoList.setAttribute('data-item' , i);
+            //     geoList.classList.add("list-group-item")
+            //      geoList.innerHTML = `<strong>${i}</strong>`
+            //      document.getElementById('container').append(geoList) 
 
-            const placeId = response.data.results[0].place_id;
-            document.getElementById('data-place_id').innerHTML += ': '+placeId ;
+            //      if(typeof geoObj[i] === 'object'){
+                    
+            //         const test = document.createElement('ul');
+            //         test.classList.add("list-group");
+            //         console.log({test})
+            //          const liTest = document.createElement('li');
+            //          liTest.classList.add("list-group-item");
+            //          console.log({liTest})
+            //          liTest.innerHTML = geoObj[i]
+            //          test.innerHTML = liTest;
+            //          geoList.after(test);
+                     
+            //      }else if(typeof geoObj[i] === 'objet' && Array.isArray(geoObj)){
 
-            const plusCode = response.data.results[0].plus_code;
-            console.log(plusCode)
-            for(let i in plusCode){
-                document.getElementById('data-plus_code').innerHTML += `:${i}: ${plusCode[i]}`;
+            //      }
+            //      else { 
 
-            }
+            //      }
+            //     // console.log({i})
+            //     // console.log(geoObj[i])
+            //     // //console.log(response.data.results[0])
+            //     //  if(typeof geoObj[i] === 'string'){
+            //     //    geoList.innerHTML += ': ' + geoObj[i]
+            //       }
+               
+                //  else{
 
-        })
+                // const test = document.createElement('ul').classList.add("list-group");
+                // document.createElement('li').classList.add("list-group-item").innerHTML = geoObj[i]
+                // geoList.after(test);
+                //  }
+
+                
+
+                // if(typeof geoObj[i] === 'object'){
+                //    const geoSubObject = geoObj[i];
+                //    console.log({geoSubObject})
+                //    for(let j in geoSubObject){
+                //        const geoSubList = document.createElement('ul');
+                //        geoSubList.classList.add('list-group')
+                //        const geoSubItem = document.createElement('li')
+                //        geoSubItem.classList.add('list-group-item')
+                //        geoSubItem.innerHTML = geoSubObject[j]
+                //        geoSubList.append(geoSubItem)
+                //    }
+                // }
+
+            // }
+
+            // const formattedAddress = response.data.results[0].formatted_address;
+            // document.getElementById('formatted_address').innerHTML += ': '+ formattedAddress;
+
+            // const geometry = response.data.results[0].geometry.location;
+            // document.getElementById('geometry').innerHTML += ` : Latitude =  ${geometry.lat}  : Longitude =  ${geometry.lng} ` ;
+
+            // const placeId = response.data.results[0].place_id;
+            // document.getElementById('place_id').innerHTML += ': '+placeId ;
+
+            // const plusCode = response.data.results[0].plus_code;
+            // console.log(plusCode)
+            // for(let i in plusCode){
+            //     document.getElementById('plus_code').innerHTML += `:${i}: ${plusCode[i]}`;
+
+            // }
+
+         })
     }
 
     geoCode2()
