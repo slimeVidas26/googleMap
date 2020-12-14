@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Geocoding3</title>
+<style>
+    .style-item { 
+        background-color:chartreuse;
+        font-weight: bold;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+</style>
+    
+</head>
+<body>
+   
+
+    <div id="container">
+        <h1 class="text-center">Geocoding 3</h1>
+        <!-- Content here -->
+      </div>
+
+    <script>
+   
+
+    function geoCode3(){
+         var location = "1600+Amphitheatre+Parkway,+Mountain+View,+CA";
+         var api = "AIzaSyBi-aqdycegFXEhvd37vSubX0u0sGjw3FM";
+         axios.get("https://maps.googleapis.com/maps/api/geocode/json" ,{
+             params : {
+                 address : location,
+                 key : api
+
+             }
+         })
+        .then(function(response){
+         //console.log(Array.isArray(response.data.results[0]))
+         const res  = response.data.results[0];
+         //console.log(res)
+         const list  =document.createElement('ul');
+             list.classList.add('list-group')
+             document.getElementById('container').append(list)
+         for(let i in res){
+             //console.log(typeof i)
+             const item = document.createElement('li')
+            item.classList.add('list-group-item')
+            item.classList.add('style-item')
+            item.setAttribute('data-item' , i)
+            item.textContent = i
+            list.append(item)
+
+          
+         }
+
+         })
+    }
+
+    geoCode3()
+    </script>
+   
+    
+</body>
+</html>

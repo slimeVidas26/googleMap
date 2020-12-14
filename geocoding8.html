@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Geocoding8</title>
+<style>
+    .style-item { 
+        background-color:chartreuse;
+        font-weight: bold;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+
+    .list-group { 
+         flex-direction: row; 
+        margin-bottom: 8px;
+        
+    }
+    .yellow { 
+        background-color: yellow;
+        width : 280px;
+    }
+    .mediumorchid { 
+        background-color:mediumorchid;
+    }
+
+</style>
+    
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Geocoding 8</h1>
+
+        <div id="address_components">    </div>
+        <div id="formatted_address"></div>
+        <div id="geometry"></div>
+        <div id="geometry_location_type"></div>
+        <div id="geometry_viewport_northeast"></div>
+        <div id="geometry_viewport_southwest"></div>
+
+
+
+
+        <div id="place_id"></div>
+        <div id="plus_code"></div>
+
+        <div id="types"></div>
+       
+       
+      </div>
+    <script>
+
+       
+
+    function geoCode8(){
+         var location = "1600+Amphitheatre+Parkway,+Mountain+View,+CA";
+         var api = "AIzaSyBi-aqdycegFXEhvd37vSubX0u0sGjw3FM";
+         axios.get("https://maps.googleapis.com/maps/api/geocode/json" ,{
+             params : {
+                 address : location,
+                 key : api
+
+             }
+         })
+        .then(function(response){
+         let res  = response.data.results[0];
+
+         //adress_components
+         let addressComponents = res.address_components;
+         let addressComponentsOutput  = '';
+         for(let i = 0 ; i < addressComponents.length ; i++){
+            addressComponentsOutput  += `<ul class = " address-components list-group">`
+            addressComponentsOutput += `<li class = " yellow list-group-item"><strong>Address Components</strong></li>`
+             Object.keys(addressComponents[i]).forEach(key =>{  
+             addressComponentsOutput  += `<li class = " list-group-item"><strong> ${key} :</strong> ${addressComponents[i][key]}<li>`
+             });
+             addressComponentsOutput  +=`</ul>`
+         }
+
+         //input to app
+         document.getElementById('address_components').innerHTML = addressComponentsOutput; 
+
+         
+
+         
+         //formatted_address
+         let formattedAdress = res.formatted_address;
+         let formattedAddressOutput = `<ul class = "list-group">
+            <li class = " yellow list-group-item"><strong>Formatted Address </strong><li>
+
+            <li class = "list-group-item"> ${formattedAdress}<li>
+         </ul>`;
+         //input to app
+         document.getElementById('formatted_address').innerHTML = formattedAddressOutput; 
+
+
+         //geometry.location
+          let geometryLocation = res.geometry.location;
+           let geometryLocationOutput  = '';
+         
+            geometryLocationOutput  += `<ul class = "geometryLocation list-group">`
+            geometryLocationOutput += `<li class = "yellow list-group-item"><strong>geometry Location</strong></li>`
+                Object.keys(geometryLocation).forEach(key =>{
+                geometryLocationOutput  += `<li class = "mediumorchid list-group-item"><strong> ${key}</strong><li>`
+               geometryLocationOutput  += `<li class = "list-group-item"> ${geometryLocation[key]}<li>`
+             
+            });
+             geometryLocationOutput  +=`</ul>`
+             
+         //input to app
+         document.getElementById('geometry').innerHTML = geometryLocationOutput;
+
+
+          //geometry.viewport northeast
+          let geometryViewportNortheast = res.geometry.viewport.northeast;
+           let geometryViewportNortheastOutput  = '';
+         
+            geometryViewportNortheastOutput  += `<ul class = "geometryViewportNortheast list-group">`
+            geometryViewportNortheastOutput += `<li class = "yellow list-group-item"><strong>geometry Viewport NorthEast</strong></li>`
+                Object.keys(geometryViewportNortheast).forEach(key =>{
+                geometryViewportNortheastOutput  += `<li class = "mediumorchid list-group-item"><strong> ${key}</strong><li>`
+               geometryViewportNortheastOutput  += `<li class = "list-group-item"> ${geometryViewportNortheast[key]}<li>`
+             
+            });
+             geometryViewportNortheastOutput  +=`</ul>`
+             
+         //input to app
+         document.getElementById('geometry_viewport_northeast').innerHTML = geometryViewportNortheastOutput;
+
+          //geometry.viewport southwest
+          let geometryViewportSouthwest = res.geometry.viewport.southwest;
+           let geometryViewportSouthwestOutput  = '';
+         
+            geometryViewportSouthwestOutput  += `<ul class = "geometryViewportSouthwest list-group">`
+            geometryViewportSouthwestOutput += `<li class = "yellow list-group-item"><strong>geometry Viewport SouthWest</strong></li>`
+                Object.keys(geometryViewportSouthwest).forEach(key =>{
+                geometryViewportSouthwestOutput  += `<li class = "mediumorchid list-group-item"><strong> ${key}</strong><li>`
+               geometryViewportSouthwestOutput  += `<li class = "list-group-item"> ${geometryViewportSouthwest[key]}<li>`
+             
+            });
+             geometryViewportSouthwestOutput  +=`</ul>`
+             
+         //input to app
+         document.getElementById('geometry_viewport_southwest').innerHTML = geometryViewportSouthwestOutput;   
+
+
+          //geometry.location type
+          let geometryLocationType = res.geometry.location_type;
+           let geometryLocationTypeOutput  = '';
+         
+            geometryLocationTypeOutput  += `<ul class = "geometryLocationType list-group">`
+            geometryLocationTypeOutput += `<li class = "yellow list-group-item"><strong>geometry Location Type</strong></li>`
+               
+                geometryLocationTypeOutput  += `<li class = "mediumorchid list-group-item"><strong> ${geometryLocationType}</strong><li>`
+             
+           
+             geometryLocationTypeOutput  +=`</ul>`
+             
+         //input to app
+         document.getElementById('geometry_location_type').innerHTML = geometryLocationTypeOutput; 
+
+          
+
+        
+
+         //place_id
+         let placeId = res.place_id;
+         let placeIdOutput = `<ul class = "list-group">
+            <li class = " yellow list-group-item"><strong>Place Id </strong><li>
+
+            <li class = "list-group-item">${placeId}<li>
+         </ul>`;
+         //input to app
+         document.getElementById('place_id').innerHTML = placeIdOutput ; 
+    
+
+           //plus_code
+           let plusCode = res.plus_code;
+           let plusCodeOutput  = '';
+         
+            plusCodeOutput  += `<ul class = "plus-code list-group">`
+            plusCodeOutput += `<li class = "yellow list-group-item"><strong>Plus Code</strong></li>`
+             Object.keys(plusCode).forEach(key =>{  
+            plusCodeOutput  += `<li class = "list-group-item"><strong> ${key} :</strong> ${plusCode[key]}<li>`
+             });
+             plusCodeOutput  +=`</ul>`
+       
+         //input to app
+         document.getElementById('plus_code').innerHTML = plusCodeOutput; 
+
+
+
+          //types
+          let types = res.types;
+         let typesOutput = `<ul class = "list-group">
+            <li class = " yellow list-group-item"><strong>Types </strong><li>
+            <li class = "list-group-item"> ${types}<li>
+         </ul>`;
+         //input to app
+         document.getElementById('types').innerHTML = typesOutput ; 
+         })
+         .catch(error =>{
+        console.log(error)
+         })
+    }
+
+    geoCode8()
+    </script>
+   
+    
+</body>
+</html>

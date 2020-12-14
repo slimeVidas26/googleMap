@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Geocoding6</title>
+<style>
+    .style-item { 
+        background-color:chartreuse;
+        font-weight: bold;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+</style>
+    
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Geocoding 6</h1>
+        <!-- Content here -->
+        <ul id = "list" class = 'list-group'></ul>
+      </div>
+    <script>
+
+    function geoCode6(){
+         var location = "1600+Amphitheatre+Parkway,+Mountain+View,+CA";
+         var api = "AIzaSyBi-aqdycegFXEhvd37vSubX0u0sGjw3FM";
+         axios.get("https://maps.googleapis.com/maps/api/geocode/json" ,{
+             params : {
+                 address : location,
+                 key : api
+
+             }
+         })
+        .then(function(response){
+         const res  = response.data.results[0];
+         //console.log(res)
+         
+         const iterate = (obj)=>{
+            const list = document.getElementById('list')
+            let output  = '';
+             Object.keys(obj).forEach((key)=>{
+
+                   if(typeof obj[key]==='object'){
+                       iterate(obj[key])
+                   }
+                   else{
+                    output += `<li class = "${key} list-group-item"><strong>${key} :</strong> ${obj[key]}</li>`
+                   }
+
+
+                   
+
+             })
+             list.innerHTML += output ;
+         }
+         iterate(res)
+         })
+         .catch(error =>{
+        console.log(error)
+         })
+    }
+
+    geoCode6()
+    </script>
+   
+    
+</body>
+</html>

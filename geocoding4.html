@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Geocoding4</title>
+<style>
+    .style-item { 
+        background-color:chartreuse;
+        font-weight: bold;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+</style>
+    
+</head>
+<body>
+   
+
+    <div class="container">
+        <h1 class="text-center">Geocoding 4</h1>
+        <!-- Content here -->
+      </div>
+
+    <script>
+
+const iterate = (obj , elem)=>{
+    const list = document.createElement('ul')
+      list.classList.add('list-group')
+          Object.keys(obj).forEach(key =>{
+              console.log(key)
+    const listItem = document.createElement('li')
+    listItem.classList.add('list-group-item')
+    listItem.innerHTML = `<strong>${key}</strong>`;
+    list.append(listItem)
+    const parent = document.getElementsByClassName(elem)[0]
+    parent.append(list);
+
+    if(typeof obj[key] === 'object'){
+        iterate(obj[key] , 'list-group')
+    }
+    else if(typeof obj[key] === 'object' && Array.isArray(obj[key])){
+         obj[key].forEach(key=>{
+        listItem.innerHTML += obj[key]; 
+         });  
+    }
+    else {
+        //listItem.innerHTML += obj[key];  
+    }
+          })
+         }
+
+
+   
+
+    function geoCode4(){
+         var location = "1600+Amphitheatre+Parkway,+Mountain+View,+CA";
+         var api = "AIzaSyBi-aqdycegFXEhvd37vSubX0u0sGjw3FM";
+         axios.get("https://maps.googleapis.com/maps/api/geocode/json" ,{
+             params : {
+                 address : location,
+                 key : api
+
+             }
+         })
+        .then(function(response){
+         const res  = response.data.results[0];
+         console.log(res)
+         iterate(res , "container")
+         })
+    }
+
+    geoCode4()
+    </script>
+   
+    
+</body>
+</html>

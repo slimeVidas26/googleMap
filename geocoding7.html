@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Geocoding7</title>
+<style>
+    .style-item { 
+        background-color:chartreuse;
+        font-weight: bold;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+</style>
+    
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Geocoding 7</h1>
+       
+      </div>
+    <script>
+
+    function geoCode7(){
+         var location = "1600+Amphitheatre+Parkway,+Mountain+View,+CA";
+         var api = "AIzaSyBi-aqdycegFXEhvd37vSubX0u0sGjw3FM";
+         axios.get("https://maps.googleapis.com/maps/api/geocode/json" ,{
+             params : {
+                 address : location,
+                 key : api
+
+             }
+         })
+        .then(function(response){
+         let res  = response.data.results[0];
+         let output = document.createElement('ul');
+         output.classList.add('list-group')
+         let title = document.createElement('h2')
+         let start = document.createElement('div')
+         start.innerHTML = '######################'
+         let end = document.createElement('div')
+         end.innerHTML = '######################'
+         let list = document.createElement('div');
+         
+         
+         function iterate(obj){
+            Object.keys(obj).forEach(key =>{
+               
+         //is object
+         if(typeof obj[key]==='object'){
+             //title.innerHTML = key
+             //output.append(title)
+            //output.innerHTML += key
+             iterate(obj[key])
+         }
+         else { 
+            
+            let listItem = `<li class = "list-group-item">${key} : ${obj[key]}</li>`;
+            list.append(start)
+         list.append(output)
+         list.append(end)
+          output.innerHTML += listItem
+         }
+
+         
+         })
+         }
+         
+         iterate(res)
+         
+         let container = document.getElementsByClassName('container')[0]
+        container.append(output);
+         
+         })
+         .catch(error =>{
+        console.log(error)
+         })
+    }
+
+    geoCode7()
+    </script>
+   
+    
+</body>
+</html>
