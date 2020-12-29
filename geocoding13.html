@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous">
+            <link rel="stylesheet" href="flex.css">
+
+        <link rel="stylesheet" href="style.css">
+
+        <title>Geocoding13</title>
+
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="text-center">Geocoding 13</h1>
+
+           <div class="address_components">
+            <div class="wrapper-array">
+                
+                <div class="key">Address Components</div>
+                <div class="toto">
+               
+
+                <div class="value-array">
+                    <div class="wrapper-array-item">
+                        <div class="key">long_name</div>
+                        <div class="value">1600</div>
+                    </div>
+                    <div class="wrapper-array-item">
+                        <div class="key">short_name</div>
+                        <div class="value">1600</div>
+                    </div>
+                    <div class="wrapper-array-item">
+                        <div class="key">types</div>
+                        <div class="value">street_number</div>
+                    </div>
+                </div>
+                <div class="value-array">
+                    <div class="wrapper-array-item">
+                        <div class="key">long_name</div>
+                        <div class="value">Amphitheatre Parkway</div>
+                    </div>
+                    <div class="wrapper-array-item">
+                        <div class="key">short_name</div>
+                        <div class="value">Amphitheatre Pkwy</div>
+                    </div>
+                    <div class="wrapper-array-item">
+                        <div class="key">types</div>
+                        <div class="value">route</div>
+                    </div>
+                </div>
+                <div class="value-array">
+                    <div class="wrapper-array-item">
+                        <div class="key">long_name</div>
+                        <div class="value">Mountain View</div>
+                    </div>
+                    <div class="wrapper-array-item">
+                        <div class="key">short_name</div>
+                        <div class="value">Mountain View</div>
+                    </div>
+                    <div class="wrapper-array-item">
+                        <div class="key">types</div>
+                        <div class="value">locality , political</div>
+                    </div>
+                </div>
+                <div class="value-array">
+                    <div class="wrapper-array-item">
+                        <div class="key">long_name</div>
+                        <div class="value">Santa Clara County</div>
+                    </div>
+                    <div class="wrapper-array-item">
+                        <div class="key">short_name</div>
+                        <div class="value">Santa Clara County</div>
+                    </div>
+                    <div class="wrapper-array-item">
+                        <div class="key">types</div>
+                        <div class="value">administrative_area_level_2 , political</div>
+                    </div>
+                </div>
+
+                <div class="value-array">
+                    <div class="wrapper-array-item">
+                        <div class="key">long_name</div>
+                        <div class="value">California</div>
+                    </div>
+                    <div class="wrapper-array-item">
+                        <div class="key">short_name</div>
+                        <div class="value">CA</div>
+                    </div>
+                    <div class="wrapper-array-item">
+                        <div class="key">types</div>
+                        <div class="value">administrative_area_level_1 , political</div>
+                    </div>
+                </div>
+
+                <div class="value-array">
+                    <div class="wrapper-array-item">
+                        <div class="key">long_name</div>
+                        <div class="value">États-Unis</div>
+                    </div>
+                    <div class="wrapper-array-item">
+                        <div class="key">short_name</div>
+                        <div class="value">US</div>
+                    </div>
+                    <div class="wrapper-array-item">
+                        <div class="key">types</div>
+                        <div class="value">country , political</div>
+                    </div>
+                </div>
+
+                <div class="value-array">
+                    <div class="wrapper-array-item">
+                        <div class="key">long_name</div>
+                        <div class="value">94043</div>
+                    </div>
+                    <div class="wrapper-array-item">
+                        <div class="key">short_name</div>
+                        <div class="value">94043</div>
+                    </div>
+                    <div class="wrapper-array-item">
+                        <div class="key">types</div>
+                        <div class="value">postal_code</div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+           <div class="formatted_address">
+                <div class="wrapper">
+                    <div class="key">Formatted_address</div>
+                    <div class="value">1600 Amphitheatre Pkwy, Mountain View, CA 94043, États-Unis</div>
+                </div>
+           </div>
+
+           <div class="geometry">
+              <div class="wrapper">
+                  <div class="key-5">Geometry</div>
+                  <div class="value">
+                      <div class="wrapper">
+                        <div class="key-2">Location</div>
+                        <div class="value">
+                            <div class="wrapper">
+                                <div class="key">Lat</div>
+                                <div class="value">37.4220461</div>
+                            </div>
+                            <div class="wrapper">
+                                <div class="key">Lng</div>
+                                <div class="value">-122.08409</div>
+                            </div>
+
+                        </div>
+  
+                      </div>
+                      <div class="wrapper">
+                        <div class="key">Location_type</div>
+                        <div class="value">ROOFTOP</div>
+                      </div>
+                      <div class="wrapper">
+                        <div class="key-4">Viewport</div>
+                        <div class="value">
+                            <div class="wrapper">
+                                <div class="key-n-e">NorthEast</div>
+                                <div class="value">
+                                    <div class="wrapper">
+                                        <div class="key">Lat</div>
+                                        <div class="value">37.4233950802915</div> 
+                                    </div>
+                                    <div class="wrapper">
+                                        <div class="key">Lng</div>
+                                                    <div class="value">-122.0827410197085</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wrapper">
+                                <div class="key-s-w">SouthWest</div>
+                                <div class="value">
+                                    <div class="wrapper">
+                                        <div class="key">Lat</div>
+                                        <div class="value">37.4233950802915</div> 
+                                    </div>
+                                    <div class="wrapper">
+                                        <div class="key">Lng</div>
+                                                    <div class="value">-122.0827410197085</div>
+                                    </div>
+                                </div>  
+                            </div>
+
+                        </div>
+                      </div>
+
+                  </div>
+              </div>
+           </div>
+
+           <div class="place_id">
+            <div class="wrapper">
+                <div class="key">Place_id</div>
+                <div class="value">ChIJVYBZP-Oxj4ARls-qJ_G3tgM</div>
+            </div>
+           </div>
+
+           <div class="plus_code">
+               <div class="wrapper">
+                   <div class="key-2">Plus_code</div>
+                   <div class="value">
+                       <div class="wrapper">
+                           <div class="key">Compound_code</div>
+                           <div class="value">CWC8+R9 Mountain View, Californie, États-Unis</div>
+                       </div>
+                       <div class="wrapper">
+                        <div class="key">Global_code</div>
+                        <div class="value">849VCWC8+R9</div>
+                    </div>
+                   </div>
+               </div>
+           </div>
+
+           <div class="types">
+               <div class="wrapper">
+                   <div class="key">types</div>
+                   <div class="value">street_address</div>
+               </div>
+           </div>
+
+          </div>
+        <script>
+
+            function geoCode13() {
+                var location = "1600+Amphitheatre+Parkway,+Mountain+View,+CA";
+                var api = "AIzaSyBi-aqdycegFXEhvd37vSubX0u0sGjw3FM";
+                axios
+                    .get("https://maps.googleapis.com/maps/api/geocode/json", {
+                        params: {
+                            address: location,
+                            key: api
+                        }
+                    })
+                    .then(function (response) {
+                        let res = response.data.results[0];
+                       console.log(res)
+
+});
+}
+
+        geoCode13()
+        </script>
+    </body>
+</html>

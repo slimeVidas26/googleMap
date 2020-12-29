@@ -94,73 +94,111 @@
             <li class = "list-group-item"> ${formattedAdress}<li>
          </ul>`;
          //input to app
-         document.getElementById('formatted_address').innerHTML = formattedAddressOutput; 
+         document.getElementById('formatted_address').innerHTML = formattedAddressOutput;
 
 
-         //geometry.location
-          let geometryLocation = res.geometry.location;
-           let geometryLocationOutput  = '';
+         //geometry
+         let geometry = res.geometry;
+         console.log(Object.keys(res)[2]) 
+         let geometryTitle = Object.keys(res)[2].toUpperCase();
+         document.getElementById('geometry').innerHTML = `<h5>${geometryTitle}</h5>`
+         let geometryOutput = '';
          
-            geometryLocationOutput  += `<ul class = "geometryLocation list-group">`
-            geometryLocationOutput += `<li class = "yellow list-group-item"><strong>geometry Location</strong></li>`
-                Object.keys(geometryLocation).forEach(key =>{
-                geometryLocationOutput  += `<li class = "mediumorchid list-group-item"><strong> ${key}</strong><li>`
-               geometryLocationOutput  += `<li class = "list-group-item"> ${geometryLocation[key]}<li>`
-             
-            });
-             geometryLocationOutput  +=`</ul>`
-             
+         function iterate(obj){
+            console.log(obj)
+            Object.keys(obj).forEach(key =>{
+            
+              if(typeof obj[key] === 'object') {
+                  iterate(obj[key])
+              } 
+              else{
+                 let geoArray = Object.keys(geometry)
+                geometryOutput += `<ul class = "list-group">`
+            //   for(let i = 0 ; i < geoArray.length ; i++){
+                 
+                geometryOutput +=`<li class = "yellow list-group-item"><strong>${geoArray[0]}</strong></li>` 
+            // } 
+            geometryOutput += `<li class = "yellow list-group-item"><strong>${key}</strong></li>
+                <li class = " list-group-item"><strong>${obj[key]}</strong></li>
+                </ul>`    
+              
+        
+              }
+        
+         })
+         }
+
+         iterate(geometry);
+        
+
          //input to app
-         document.getElementById('geometry').innerHTML = geometryLocationOutput;
+         document.getElementById('geometry').innerHTML += geometryOutput;
 
 
-          //geometry.viewport northeast
-          let geometryViewportNortheast = res.geometry.viewport.northeast;
-           let geometryViewportNortheastOutput  = '';
+        //  //geometry.location
+        //   let geometryLocation = res.geometry.location;
+        //    let geometryLocationOutput  = '';
          
-            geometryViewportNortheastOutput  += `<ul class = "geometryViewportNortheast list-group">`
-            geometryViewportNortheastOutput += `<li class = "yellow list-group-item"><strong>geometry Viewport NorthEast</strong></li>`
-                Object.keys(geometryViewportNortheast).forEach(key =>{
-                geometryViewportNortheastOutput  += `<li class = "mediumorchid list-group-item"><strong> ${key}</strong><li>`
-               geometryViewportNortheastOutput  += `<li class = "list-group-item"> ${geometryViewportNortheast[key]}<li>`
+        //     geometryLocationOutput  += `<ul class = "geometryLocation list-group">`
+        //     geometryLocationOutput += `<li class = "yellow list-group-item"><strong>geometry Location</strong></li>`
+        //         Object.keys(geometryLocation).forEach(key =>{
+        //         geometryLocationOutput  += `<li class = "mediumorchid list-group-item"><strong> ${key}</strong><li>`
+        //        geometryLocationOutput  += `<li class = "list-group-item"> ${geometryLocation[key]}<li>`
              
-            });
-             geometryViewportNortheastOutput  +=`</ul>`
+        //     });
+        //      geometryLocationOutput  +=`</ul>`
              
-         //input to app
-         document.getElementById('geometry_viewport_northeast').innerHTML = geometryViewportNortheastOutput;
+        //  //input to app
+        //  document.getElementById('geometry').innerHTML = geometryLocationOutput;
 
-          //geometry.viewport southwest
-          let geometryViewportSouthwest = res.geometry.viewport.southwest;
-           let geometryViewportSouthwestOutput  = '';
+
+        //   //geometry.viewport northeast
+        //   let geometryViewportNortheast = res.geometry.viewport.northeast;
+        //    let geometryViewportNortheastOutput  = '';
          
-            geometryViewportSouthwestOutput  += `<ul class = "geometryViewportSouthwest list-group">`
-            geometryViewportSouthwestOutput += `<li class = "yellow list-group-item"><strong>geometry Viewport SouthWest</strong></li>`
-                Object.keys(geometryViewportSouthwest).forEach(key =>{
-                geometryViewportSouthwestOutput  += `<li class = "mediumorchid list-group-item"><strong> ${key}</strong><li>`
-               geometryViewportSouthwestOutput  += `<li class = "list-group-item"> ${geometryViewportSouthwest[key]}<li>`
+        //     geometryViewportNortheastOutput  += `<ul class = "geometryViewportNortheast list-group">`
+        //     geometryViewportNortheastOutput += `<li class = "yellow list-group-item"><strong>geometry Viewport NorthEast</strong></li>`
+        //         Object.keys(geometryViewportNortheast).forEach(key =>{
+        //         geometryViewportNortheastOutput  += `<li class = "mediumorchid list-group-item"><strong> ${key}</strong><li>`
+        //        geometryViewportNortheastOutput  += `<li class = "list-group-item"> ${geometryViewportNortheast[key]}<li>`
              
-            });
-             geometryViewportSouthwestOutput  +=`</ul>`
+        //     });
+        //      geometryViewportNortheastOutput  +=`</ul>`
              
-         //input to app
-         document.getElementById('geometry_viewport_southwest').innerHTML = geometryViewportSouthwestOutput;   
+        //  //input to app
+        //  document.getElementById('geometry_viewport_northeast').innerHTML = geometryViewportNortheastOutput;
 
-
-          //geometry.location type
-          let geometryLocationType = res.geometry.location_type;
-           let geometryLocationTypeOutput  = '';
+        //   //geometry.viewport southwest
+        //   let geometryViewportSouthwest = res.geometry.viewport.southwest;
+        //    let geometryViewportSouthwestOutput  = '';
          
-            geometryLocationTypeOutput  += `<ul class = "geometryLocationType list-group">`
-            geometryLocationTypeOutput += `<li class = "yellow list-group-item"><strong>geometry Location Type</strong></li>`
+        //     geometryViewportSouthwestOutput  += `<ul class = "geometryViewportSouthwest list-group">`
+        //     geometryViewportSouthwestOutput += `<li class = "yellow list-group-item"><strong>geometry Viewport SouthWest</strong></li>`
+        //         Object.keys(geometryViewportSouthwest).forEach(key =>{
+        //         geometryViewportSouthwestOutput  += `<li class = "mediumorchid list-group-item"><strong> ${key}</strong><li>`
+        //        geometryViewportSouthwestOutput  += `<li class = "list-group-item"> ${geometryViewportSouthwest[key]}<li>`
+             
+        //     });
+        //      geometryViewportSouthwestOutput  +=`</ul>`
+             
+        //  //input to app
+        //  document.getElementById('geometry_viewport_southwest').innerHTML = geometryViewportSouthwestOutput;   
+
+
+        //   //geometry.location type
+        //   let geometryLocationType = res.geometry.location_type;
+        //    let geometryLocationTypeOutput  = '';
+         
+        //     geometryLocationTypeOutput  += `<ul class = "geometryLocationType list-group">`
+        //     geometryLocationTypeOutput += `<li class = "yellow list-group-item"><strong>geometry Location Type</strong></li>`
                
-                geometryLocationTypeOutput  += `<li class = "mediumorchid list-group-item"><strong> ${geometryLocationType}</strong><li>`
+        //         geometryLocationTypeOutput  += `<li class = "mediumorchid list-group-item"><strong> ${geometryLocationType}</strong><li>`
              
            
-             geometryLocationTypeOutput  +=`</ul>`
+        //      geometryLocationTypeOutput  +=`</ul>`
              
-         //input to app
-         document.getElementById('geometry_location_type').innerHTML = geometryLocationTypeOutput; 
+        //  //input to app
+        //  document.getElementById('geometry_location_type').innerHTML = geometryLocationTypeOutput; 
 
           
 

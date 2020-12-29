@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous">
+            <link rel="stylesheet" href="flex14.css">
+
+        <link rel="stylesheet" href="style.css">
+
+        <title>Geocoding14</title>
+
+    </head>
+
+
+    <body>
+        <div class="container">
+            <h1 class="text-center">Geocoding 14</h1>
+
+            <div class="address_components">
+                <div class="key">address_components</div>
+                   <div class="value">
+                    <div class="array-wrapper">
+                        <div class="object-wrapper">
+                            <div class="object-item">
+                             <div class="key">long_name</div>
+                             <div class="value">
+                                 <div class="string-wrapper">1600</div>
+                                 </div>  
+                            </div>
+     
+                            <div class="object-item">
+                             <div class="key">short_name</div>
+                             <div class="value">
+                                 <div class="string-wrapper">1600</div>
+                             </div>  
+                            </div>
+
+                            <div class="object-item">
+                                <div class="key">types</div>
+                                <div class="value">
+                                    <div class="array-wrapper">
+                                        <div class="string-wrapper">street_number</div>
+                                        
+                                    </div>
+                                </div>  
+                               </div>
+                        </div>
+
+                        <div class="object-wrapper">
+                            <div class="object-item">
+                             <div class="key">long_name</div>
+                             <div class="value">
+                                 <div class="string-wrapper">Amphitheatre Parkway</div>
+                                 </div>  
+                            </div>
+     
+                            <div class="object-item">
+                             <div class="key">short_name</div>
+                             <div class="value">
+                                 <div class="string-wrapper">Amphitheatre Pkwy</div>
+                             </div>  
+                            </div>
+
+                            <div class="object-item">
+                                <div class="key">types</div>
+                                <div class="value">
+                                    <div class="array-wrapper">
+                                        <div class="string-wrapper">route</div>
+                                        
+                                    </div>
+                                </div>  
+                               </div>
+                        </div>
+
+                        <div class="object-wrapper">
+                            <div class="object-item">
+                             <div class="key">long_name</div>
+                             <div class="value">
+                                 <div class="string-wrapper">Mountain View</div>
+                                 </div>  
+                            </div>
+     
+                            <div class="object-item">
+                             <div class="key">short_name</div>
+                             <div class="value">
+                                 <div class="string-wrapper">Mountain View</div>
+                             </div>  
+                            </div>
+
+                            <div class="object-item">
+                                <div class="key">types</div>
+                                <div class="value">
+                                    <div class="array-wrapper2">
+                                        <div class="string-wrapper">locality</div>
+                                        <div class="string-wrapper">political</div>
+
+                                        
+                                    </div>
+                                </div>  
+                               </div>
+                        </div>
+
+                        <div class="object-wrapper">
+                            <div class="object-item">
+                             <div class="key">long_name</div>
+                             <div class="value">
+                                 <div class="string-wrapper">Santa Clara County</div>
+                                 </div>  
+                            </div>
+     
+                            <div class="object-item">
+                             <div class="key">short_name</div>
+                             <div class="value">
+                                 <div class="string-wrapper">Santa Clara County</div>
+                             </div>  
+                            </div>
+
+                            <div class="object-item">
+                                <div class="key">types</div>
+                                <div class="value">
+                                    <div class="array-wrapper2">
+                                        <div class="string-wrapper">administrative_area_level_2</div>
+                                        <div class="string-wrapper">political</div>
+
+                                        
+                                    </div>
+                                </div>  
+                               </div>
+                        </div>
+
+                        <div class="object-wrapper">
+                            <div class="object-item">
+                             <div class="key">long_name</div>
+                             <div class="value">
+                                 <div class="string-wrapper">California</div>
+                                 </div>  
+                            </div>
+     
+                            <div class="object-item">
+                             <div class="key">short_name</div>
+                             <div class="value">
+                                 <div class="string-wrapper">CA</div>
+                             </div>  
+                            </div>
+
+                            <div class="object-item">
+                                <div class="key">types</div>
+                                <div class="value">
+                                    <div class="array-wrapper2">
+                                        <div class="string-wrapper">administrative_area_level_1</div>
+                                        <div class="string-wrapper">political</div>
+
+                                        
+                                    </div>
+                                </div>  
+                               </div>
+                        </div>
+
+                        <div class="object-wrapper">
+                            <div class="object-item">
+                             <div class="key">long_name</div>
+                             <div class="value">
+                                 <div class="string-wrapper">États-Unis</div>
+                                 </div>  
+                            </div>
+     
+                            <div class="object-item">
+                             <div class="key">short_name</div>
+                             <div class="value">
+                                 <div class="string-wrapper">US</div>
+                             </div>  
+                            </div>
+
+                            <div class="object-item">
+                                <div class="key">types</div>
+                                <div class="value">
+                                    <div class="array-wrapper2">
+                                        <div class="string-wrapper">country</div>
+                                        <div class="string-wrapper">political</div>
+
+                                        
+                                    </div>
+                                </div>  
+                               </div>
+                        </div>
+                        <div class="object-wrapper">
+                            <div class="object-item">
+                             <div class="key">long_name</div>
+                             <div class="value">
+                                 <div class="string-wrapper">94043</div>
+                                 </div>  
+                            </div>
+     
+                            <div class="object-item">
+                             <div class="key">short_name</div>
+                             <div class="value">
+                                 <div class="string-wrapper">94043</div>
+                             </div>  
+                            </div>
+
+                            <div class="object-item">
+                                <div class="key">types</div>
+                                <div class="value">
+                                    <div class="array-wrapper2">
+                                        <div class="string-wrapper">postal_code</div>
+
+                                        
+                                    </div>
+                                </div>  
+                               </div>
+                        </div>
+                        
+                    </div>
+                   </div>  
+               </div>
+
+           <div class="formatted_address">
+            <div class="key">formatted_address</div>
+            <div class="value">
+                <div class="string-wrapper">
+                    1600 Amphitheatre Pkwy, Mountain View, CA 94043, États-Unis
+                </div>
+            </div>  
+           </div>
+
+           <div class="geometry">
+            <div class="key">
+                geometry
+            </div>
+            <div class="value">
+             <div class="location">
+               <div class="key">location</div>
+               <div class="value">
+                   <div class="object-wrapper">
+                       <div class="object-item">
+                        <div class="key">lat</div>
+                        <div class="value">
+                            <div class="string-wrapper">37.4220461</div>
+                            </div>  
+                       </div>
+
+                       <div class="object-item">
+                        <div class="key">lng</div>
+                        <div class="value">
+                            <div class="string-wrapper">-122.08409</div>
+                        </div>  
+                       </div>
+                   </div>
+               </div>
+             </div>
+
+             <div class="location_type">
+                <div class="key">location_type</div>
+                <div class="value">
+                    <div class="string-wrapper">
+                        ROOFTOP
+                    </div>
+                </div>  
+               </div>
+
+               <div class="viewport">
+                <div class="key">viewport</div>
+                <div class="value">
+                    <div class="object-wrapper">
+                        <div class="object-item">
+                         <div class="key">northeast</div>
+                         <div class="value">
+                            <div class="object-wrapper">
+                                <div class="object-item">
+                                    <div class="key">lat</div>
+                                    <div class="value">
+                                        <div class="string-wrapper"> 37.4233950802915</div>
+                                       </div>
+                                </div>
+                                
+                                <div class="object-item">
+                                    <div class="key">lng</div>
+                                    <div class="value">
+                                        <div class="string-wrapper">-122.0827410197085</div>
+                                        </div>
+                                </div>
+                               
+                            </div>
+                         </div>  
+                        </div>  
+                    </div>
+
+                    <div class="object-wrapper">
+                        <div class="object-item">
+                         <div class="key">southwest</div>
+                         <div class="value">
+                            <div class="object-wrapper">
+                                <div class="object-item">
+                                    <div class="key">lat</div>
+                                    <div class="value">
+                                        <div class="string-wrapper"> 37.4206971197085</div>
+                                       </div>
+                                </div>
+                                
+                                <div class="object-item">
+                                    <div class="key">lng</div>
+                                    <div class="value">
+                                        <div class="string-wrapper">-122.0854389802915</div>
+                                        </div>
+                                </div>
+                               
+                            </div>
+                         </div>  
+                        </div>  
+                    </div>
+                </div>
+              </div>
+            </div>
+             
+           </div>
+
+           <div class="place_id">
+            <div class="key">place_id</div>
+            <div class="value">
+                <div class="string-wrapper">
+                    ChIJVYBZP-Oxj4ARls-qJ_G3tgM
+                </div>
+            </div>
+            </div>
+
+           <div class="plus_code">
+            <div class="key">plus_code</div>
+            <div class="value">
+                <div class="object-wrapper">
+                    <div class="object-item">
+                        <div class="key">compound_code</div>
+                        <div class="value">
+                            <div class="string-wrapper">CWC8+R9 Mountain View, Californie, États-Unis</div>
+                            </div>
+                    </div>
+                    
+                    <div class="object-item">
+                        <div class="key">global_code</div>
+                        <div class="value">
+                            <div class="string-wrapper"> 849VCWC8+R9</div>
+                           </div>
+                    </div>
+                   
+                </div>
+            </div>
+           </div>
+
+           <div class="types">
+            <div class="key">types</div>
+               <div class="value">
+                <div class="array-wrapper">
+                    <div class="array-item">street_address</div>
+                    
+                </div>
+               </div>  
+           </div>
+
+
+          </div>
+        <script>
+
+            function geoCode14() {
+                var location = "1600+Amphitheatre+Parkway,+Mountain+View,+CA";
+                var api = "AIzaSyBi-aqdycegFXEhvd37vSubX0u0sGjw3FM";
+                axios
+                    .get("https://maps.googleapis.com/maps/api/geocode/json", {
+                        params: {
+                            address: location,
+                            key: api
+                        }
+                    })
+                    .then(function (response) {
+                        let res = response.data.results[0];
+                       console.log(res)
+
+});
+}
+
+        geoCode14()
+        </script>
+    </body>
+</html>

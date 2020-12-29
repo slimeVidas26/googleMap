@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Geocoding9</title>
+
+    
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Geocoding 9</h1>
+
+        <div id="address_components">    </div>
+        <div id="formatted_address">
+            
+        </div>
+        <div id="geometry">
+            <div class="geometry">Geometry</div>
+
+            <div class = "geoList">
+                <div class="geo-parent">
+                <div class = "geo-item1">Location</div>
+                <div class = "geo-value1">
+                    <div class = "geo-lat-lng">
+                        <div class = "geo-lat">Lat</div>
+                        <div class = "geo-lng">12346</div>
+                    </div>
+                    <div class = "geo-lat-lng">
+                        <div class = "geo-lat">Lat</div>
+                        <div class = "geo-lng">12346</div>
+                    </div>
+                </div>
+                </div>
+                <div class="geo-parent">
+                    <div class = "geo-item2">Location type</div>
+                    <div class = "geo-value2">RoofTop</div>
+
+                </div>
+                <div class="geo-parent">
+                <div class = "geo-item3">Viewport</div>
+                <div class = "geo-value3">Viewport</div>
+                </div>
+            </div>
+        </div>
+       
+        <div id="place_id"></div>
+        <div id="plus_code">
+            
+        </div>
+
+        <div id="types"></div>
+       
+       
+      </div>
+    <script>
+
+       
+
+    function geoCode9(){
+         var location = "1600+Amphitheatre+Parkway,+Mountain+View,+CA";
+         var api = "AIzaSyBi-aqdycegFXEhvd37vSubX0u0sGjw3FM";
+         axios.get("https://maps.googleapis.com/maps/api/geocode/json" ,{
+             params : {
+                 address : location,
+                 key : api
+             }
+         })
+        .then(function(response){
+         let res  = response.data.results[0];
+         let arrLevelOne = [];
+         Object.keys(res).forEach(key=>{
+             arrLevelOne.push(key);
+         });
+
+         let formattedAddress = res.formatted_address
+         let placeId = res.place_id;
+         let types = res.types;
+         let plusCode = res.plus_code
+
+         //formatted_address
+         let formattedAddressOutput = '';
+            formattedAddressOutput += `<div class= "item-key">${arrLevelOne[1]}</div>`;
+            formattedAddressOutput += `<div class= "item-value">${formattedAddress}</div>`;
+        
+         //output formatted_address to app
+         document.getElementById('formatted_address').innerHTML =  formattedAddressOutput;
+
+         //geometry
+
+          //place_id
+          let placeIdOutput = '';
+              placeIdOutput += `<div class= "item-key">${arrLevelOne[3]}</div>`;
+              placeIdOutput += `<div class= "item-value">${placeId}</div>`;
+        
+         //output place_id to app
+         document.getElementById('place_id').innerHTML =  placeIdOutput;
+
+        //types
+           let typesOutput = '';
+              typesOutput += `<div class= "item-key">${arrLevelOne[5]}</div>`;
+              typesOutput += `<div class= "item-value-arr">${types}</div>`;
+        
+        //  //output types to app
+          document.getElementById('types').innerHTML =  typesOutput;
+
+          //plus_code
+          let plusCodeOutput = '';
+          plusCodeOutput += `<ul class = "plus-code-list">
+                <li class = "double">${arrLevelOne[4]}</li>
+                <div class="double-item-parent">`
+                    Object.keys(plusCode).forEach(key=>{
+                        plusCodeOutput+= `<li class = "double-item">
+                        <div class = "double-item-key">${key}</div>
+                        <div class = "double-item-value">${plusCode[key]}</div>
+                    </li>`
+                    })
+                    plusCodeOutput += `</div>
+               
+                              </ul>`
+        
+        //  //output plus_code to app
+          document.getElementById('plus_code').innerHTML =  plusCodeOutput;
+
+          
+
+              
+        
+        
+         });
+         }
+             
+    geoCode9()
+    </script>  
+</body>
+</html>

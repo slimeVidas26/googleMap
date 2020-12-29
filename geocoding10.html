@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+
+        <title>Geocoding10</title>
+
+    </head>
+    <body>
+        <div id="container">
+            <h1 class="text-center">Geocoding 10</h1>
+
+        </div>
+        <script>
+
+            function geoCode10() {
+                var location = "1600+Amphitheatre+Parkway,+Mountain+View,+CA";
+                var api = "AIzaSyBi-aqdycegFXEhvd37vSubX0u0sGjw3FM";
+                axios
+                    .get("https://maps.googleapis.com/maps/api/geocode/json", {
+                        params: {
+                            address: location,
+                            key: api
+                        }
+                    })
+                    .then(function (response) {
+                        let res = response.data.results[0];
+                       console.log(res)
+
+function iterate(obj){
+    let output = '';
+    output += '<ul>'
+Object.keys(obj).forEach(key=>{
+    if(key ==='plus_code'){
+        output += `<li  class = "list-group-item">
+    <ul class = "key-value-plus-code">
+    <li class = "key list-group-item">${key}</li>
+    <li class = "value list-group-item">
+        <ul class = "key-value-plus-code">
+            <li class = "key list-group-item">compound_code</li>
+            <li class = "value list-group-item">CWC8+R9 Mountain View, Californie, États-Unis</li>
+            <li class = "key list-group-item">global_code</li>
+            <li class = "value list-group-item">849VCWC8+R9</li>
+            </ul>
+        </li>
+   </ul>
+    </li>`
+    }
+    else{
+        output += `<li  class = "list-group-item">
+    <ul class = "key-value">
+    <li class = "key list-group-item">${key}</li>
+    <li class = "value list-group-item">${obj[key]}</li>
+   </ul>
+    </li>`
+     }
+
+})
+output += '</ul>'
+document.getElementById('container').innerHTML += output;
+}
+
+iterate(res)                  
+});
+}
+
+        geoCode10()
+        </script>
+    </body>
+</html>

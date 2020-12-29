@@ -1,0 +1,92 @@
+
+
+
+.address_components,
+.formatted_address ,
+.geometry ,
+.location_type ,
+.viewport ,
+.place_id ,
+.plus_code ,
+.types{
+    display:flex;
+   
+    
+}
+
+.string-wrapper{
+    background-color: yellowgreen;
+    text-align: center;
+    padding: 8px;
+    border-radius:8px;
+    margin-right: 5px;   
+
+}
+
+.object-wrapper{
+flex:1;
+}
+
+.object-item{
+    display: flex;
+   
+}
+
+.array-item{
+    display: flex;
+    background-color: yellowgreen;
+    text-align: center;
+    padding: 8px;
+    border-radius: 8px;
+   
+}
+
+.array-wrapper{
+    display:flex;
+    /* flex-direction: column; */
+    /* background-color: royalblue; */
+
+}
+
+.address_components  .array-wrapper{
+    display:flex;
+    flex-direction: column;
+    /* background-color: royalblue;  */
+}
+
+.address_components  .array-wrapper2{
+    display:flex;
+     flex-direction:row; 
+    /* background-color: royalblue;  */
+}
+
+.key{
+    display:flex;
+    flex-direction: column;
+    flex : 1 ;
+    background-color: crimson;
+    font-weight: bold;
+    justify-content: center;
+    text-align: center;
+    /* border:1px solid black; */
+    border-radius:8px;
+    margin: 0 5px 5px 0;   
+}
+
+
+
+.value { 
+    flex : 3  ;
+    /* padding:5px; */
+    margin-bottom:5px;
+
+
+
+   
+}
+
+.location{
+    display:flex;
+
+}
+

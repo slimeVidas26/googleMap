@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous">
+            <link rel="stylesheet" href="flex.css">
+
+        <link rel="stylesheet" href="style.css">
+
+        <title>Geocoding12</title>
+
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="text-center">Geocoding 12</h1>
+            <!-- formatted_address -->
+            <div class="formatted_address">
+                <div class="formatted_address_key">Formatted Address</div>
+                 <ul class = "formatted_address_values list-group">
+                     <li class = "list-group-item">1600 Amphitheatre Pkwy, Mountain View, CA 94043, États-Unis</li>
+                 </ul>
+            </div>
+
+            <!-- plus_code -->
+            <div class="plus_code">
+                <div class="plus_code_key">Plus Code</div>
+                 <ul class = "plus_code_values list-group">
+                     <li class = "compound_code list-group-item">
+                         <div class = "compound_code_key" >compound_code</div>
+                         <div class = "compound_code_value">CWC8+R9 Mountain View, Californie, États-Unis</div>
+                     </li>
+                     <li class = "global_code list-group-item">
+                        <div class = "global_code_key">global_code</div>
+                        <div class = "global_code_value">849VCWC8+R9</div>
+                    </li>
+                 </ul>
+            </div>
+
+          </div>
+        <script>
+
+            function geoCode12() {
+                var location = "1600+Amphitheatre+Parkway,+Mountain+View,+CA";
+                var api = "AIzaSyBi-aqdycegFXEhvd37vSubX0u0sGjw3FM";
+                axios
+                    .get("https://maps.googleapis.com/maps/api/geocode/json", {
+                        params: {
+                            address: location,
+                            key: api
+                        }
+                    })
+                    .then(function (response) {
+                        let res = response.data.results[0];
+                       console.log(res)
+
+});
+}
+
+        geoCode12()
+        </script>
+    </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+
+        <title>Geocoding11</title>
+
+    </head>
+    <body>
+        <div id="container">
+            <h1 class="text-center">Geocoding 10</h1>
+
+        </div>
+        <script>
+
+            function geoCode11() {
+                var location = "1600+Amphitheatre+Parkway,+Mountain+View,+CA";
+                var api = "AIzaSyBi-aqdycegFXEhvd37vSubX0u0sGjw3FM";
+                axios
+                    .get("https://maps.googleapis.com/maps/api/geocode/json", {
+                        params: {
+                            address: location,
+                            key: api
+                        }
+                    })
+                    .then(function (response) {
+                        let res = response.data.results[0];
+                       console.log(res)
+                       let output ='';
+
+
+function iterate(obj){
+
+Object.keys(obj).forEach (key=>{
+
+if (typeof obj[key] === 'object'){
+                   iterate (obj[key]);  
+}
+else{
+    output +=`<div class="string">
+          <div class="key">${key}</div>
+          <div class="objKey">${obj[key]}</div>
+</div>`
+}
+
+}
+)}
+
+iterate (res); 
+document.getElementById('container').innerHTML += output;
+
+});
+}
+
+        geoCode11()
+        </script>
+    </body>
+</html>
