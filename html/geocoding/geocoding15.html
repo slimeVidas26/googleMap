@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.js"></script>
+      
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous">
+        <link rel="stylesheet" href="css/flex15.css">
+
+
+        <title>Geocoding15</title>
+
+    </head>
+
+    <body>
+        <div class="container">
+            <h1 class="text-center">Geocoding 15</h1>
+
+
+<!-- form -->
+            <form id = "geocode-form">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="location-input" placeholder="Enter location">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+
+              <div id="map"></div>
+
+            <div class="address_components"></div>
+            <div class="formatted_address"></div>
+            <div class="geometry"></div>
+            <div class="place_id"></div>
+            <div class="plus_code"></div>
+            <div class="types"></div>
+
+        </div>
+       
+      <script src="scripts/geocoding16.js"></script>
+      
+      <script>
+
+    
+ 
+    </script>
+      <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBi-aqdycegFXEhvd37vSubX0u0sGjw3FM&callback=initMap">
+  </script>
+
+
+           
+    </body>
+</html>

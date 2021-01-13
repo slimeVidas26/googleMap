@@ -1,4 +1,9 @@
-
+#map { 
+    height : 400px;
+    width : 100%;
+    margin-bottom: 30px;
+   
+}
 
 
 .address_components,
@@ -9,14 +14,17 @@
 .place_id ,
 .plus_code ,
 .types{
-    display:flex;
-   
-    
+    display:flex;   
+}
+
+.container h1{
+    margin: 25px;
 }
 
 .string-wrapper{
+    display:flex;
+    justify-content: center;
     background-color: yellowgreen;
-    text-align: center;
     padding: 8px;
     border-radius:8px;
     margin-right: 5px;   
@@ -27,17 +35,31 @@
 flex:1;
 }
 
-.object-item{
-    display: flex;
-   
+.address_components .object-wrapper{
+    flex:1;
+    margin-bottom: 10px;
 }
+
+/* .object-wrapper .object-item:last-of-type {
+    margin-bottom:15px;
+
+} */
+
+.object-item{
+    display: flex;   
+}
+
+
+
+
 
 .array-item{
     display: flex;
-    background-color: yellowgreen;
+    background-color: orchid;
     text-align: center;
     padding: 8px;
     border-radius: 8px;
+    margin-right: 5px;
    
 }
 
@@ -48,7 +70,7 @@ flex:1;
 
 }
 
-.address_components  .array-wrapper{
+.address_components .array-wrapper{
     display:flex;
     flex-direction: column;
     /* background-color: royalblue;  */
@@ -77,8 +99,9 @@ flex:1;
 
 .value { 
     flex : 3  ;
-    /* padding:5px; */
     margin-bottom:5px;
+    justify-content: center;
+    align-items: center;
 
 
 
@@ -88,5 +111,38 @@ flex:1;
 .location{
     display:flex;
 
+}
+
+.text-wrapper{
+   flex-basis:20%;
+    background-color: darkgreen;
+    color:white;
+    text-align: center;
+    border-radius: 10px;
+}
+
+/* form */
+.form-group{
+    display:flex;
+    justify-content: center;
+    margin-bottom: 30px;
+
+}
+
+.form-control{
+    width : 50%;
+    margin-right: 10px;
+  
+}
+
+.btn{
+}
+
+div{
+    
+color: white;
+text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+/* box-shadow: 2px 2px 5px grey; */
+    
 }
 
